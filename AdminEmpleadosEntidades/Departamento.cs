@@ -8,7 +8,7 @@ namespace AdminEmpleadosEntidades
     {
     public class Departamento
         {
-        public int id
+        public int? id
             {
             get; set;
             }

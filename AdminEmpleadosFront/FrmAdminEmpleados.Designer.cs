@@ -30,16 +30,15 @@
             {
             this.components = new System.ComponentModel.Container();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnAlta = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dniDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +47,7 @@
             this.salarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreDepartamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -68,16 +68,6 @@
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(143, 472);
             this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panel1.Controls.Add(this.txtBusqueda);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(143, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(748, 33);
-            this.panel1.TabIndex = 1;
             // 
             // btnBuscar
             // 
@@ -139,6 +129,16 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel1.Controls.Add(this.txtBusqueda);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(143, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(748, 33);
+            this.panel1.TabIndex = 1;
+            // 
             // txtBusqueda
             // 
             this.txtBusqueda.Location = new System.Drawing.Point(3, 3);
@@ -146,6 +146,7 @@
             this.txtBusqueda.PlaceholderText = "Buscar ...";
             this.txtBusqueda.Size = new System.Drawing.Size(742, 23);
             this.txtBusqueda.TabIndex = 0;
+            this.txtBusqueda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusqueda_KeyPress);
             // 
             // dataGridView1
             // 
@@ -167,11 +168,6 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(745, 440);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // empleadoBindingSource
-            // 
-            this.empleadoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Empleado);
-           
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -221,6 +217,10 @@
             this.Departamento.DataPropertyName = "Departamento";
             this.Departamento.HeaderText = "Departamento";
             this.Departamento.Name = "Departamento";
+            // 
+            // empleadoBindingSource
+            // 
+            this.empleadoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Empleado);
             // 
             // FrmAdminEmpleados
             // 
