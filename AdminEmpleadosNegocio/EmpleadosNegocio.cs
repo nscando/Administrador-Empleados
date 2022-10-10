@@ -11,6 +11,31 @@ namespace AdminEmpleadosNegocio
             return EmpleadosDatos.Get(e);
             }
 
+
+        public static bool Update ( Empleado e )
+            {
+            if ( String.IsNullOrEmpty(e.Nombre) )
+                {
+                return false;
+                }
+
+            if ( String.IsNullOrEmpty(e.Dni) )
+                {
+                return false;
+                }
+
+            if ( e.FechaIngreso == null )
+                {
+                e.FechaIngreso = DateTime.Now;
+                }
+
+            try
+                {
+                return EmpleadosDatos.Update(e);
+                }
+            catch ( Exception ) { throw; }
+            }
+
         public static int Insert ( Empleado e )
             {
             if ( String.IsNullOrEmpty(e.Nombre) )
@@ -35,4 +60,10 @@ namespace AdminEmpleadosNegocio
             catch ( Exception ) { throw; }
             }
         }
+
+    
+    
     }
+
+    
+    

@@ -1,6 +1,6 @@
 ﻿namespace AdminEmpleadosFront
     {
-    partial class FrmInsertEmpleados
+    partial class FrmEditEmpleados
         {
         /// <summary>
         /// Required designer variable.
@@ -193,11 +193,11 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(120, 43);
             this.btnCancelar.TabIndex = 15;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // FrmInsertEmpleados
+            // FrmEditEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -221,7 +221,7 @@
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmInsertEmpleados";
+            this.Name = "FrmEditEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInsertEmpleados";
             this.Load += new System.EventHandler(this.FrmInsertEmpleados_Load);

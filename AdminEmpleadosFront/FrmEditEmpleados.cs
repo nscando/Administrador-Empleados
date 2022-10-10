@@ -3,10 +3,11 @@ using AdminEmpleadosNegocio;
 
 namespace AdminEmpleadosFront
     {
-    public partial class FrmInsertEmpleados : Form
+    public partial class FrmEditEmpleados : Form
         {
-        public EnumModoForm modoInsert = EnumModoForm.Alta;
-        public FrmInsertEmpleados ()
+        public EnumModoForm modo = EnumModoForm.Alta;
+        public Empleado _empleado = new Empleado();
+        public FrmEditEmpleados ()
             {
             InitializeComponent();
             }
@@ -78,11 +79,23 @@ namespace AdminEmpleadosFront
                     }
 
                 //guardamos los datos
-                int idEmp = EmpleadosNegocio.Insert(emp);
+                if ( modo == EnumModoForm.Alta )
+                    {
+                    int idEmp = EmpleadosNegocio.Insert(emp);
+                    txtId.Text = idEmp.ToString();
+                    MessageBox.Show("Se genero el empleado nro " + idEmp.ToString(), "Empleado creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
-                txtId.Text = idEmp.ToString();
+                if ( modo == EnumModoForm.Modificacion )
+                    {
+                    emp.id = Convert.ToInt32(txtId.Text);
+                    EmpleadosNegocio.Update(emp);
 
-                MessageBox.Show("Se genero el empleado nro " + idEmp.ToString(), "Empleado creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Los datos se actualizaron correctamente", "Empleado actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
+
 
                 LimpiarControles();
 
@@ -92,13 +105,54 @@ namespace AdminEmpleadosFront
 
         private void FrmInsertEmpleados_Load ( object sender, EventArgs e )
             {
-            LimpiarControles();
+            if ( modo == EnumModoForm.Alta )
+                {
+                LimpiarControles();
+                HabilitarControles(true);
+                }
+            if ( modo == EnumModoForm.Modificacion )
+                {
+                HabilitarControles(true);
+                CargarDatos();
+
+                }
+            if ( modo == EnumModoForm.Consulta )
+                {
+                HabilitarControles(false);
+                CargarDatos();
+                btnAceptar.Enabled = false;
+                }
             }
 
         private void btnCancelar_Click ( object sender, EventArgs e )
             {
             Close();
             }
+
+        private void HabilitarControles ( bool habilitar )
+            {
+            txtSalario.Enabled = habilitar;
+            txtDni.Enabled = habilitar;
+            txtDireccion.Enabled = habilitar;
+            txtIngreso.Enabled = habilitar;
+            txtNombre.Enabled = habilitar;
+            cbmDepartamento.Enabled = habilitar;
+            }
+
+        private void CargarDatos ()
+            {
+            txtId.Text = _empleado.id.ToString();
+            txtSalario.Value = Convert.ToDecimal(_empleado.Salario);
+            txtDireccion.Text = _empleado.Direccion;
+            txtDni.Text = _empleado.Dni;
+            if ( _empleado.FechaIngreso != null )
+                {
+                txtIngreso.Value = Convert.ToDateTime(_empleado.FechaIngreso);
+                txtNombre.Text = _empleado.Nombre;
+                }
+            }
+
+
         }
 
 

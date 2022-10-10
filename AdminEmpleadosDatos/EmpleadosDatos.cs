@@ -57,6 +57,53 @@ namespace AdminEmpleadosDatos
             return list;
             }
 
+        public static bool Update ( Empleado e )
+            {
+            string conString = System.Configuration.ConfigurationManager.ConnectionStrings["conexionDB"].ConnectionString;
+
+            using ( SqlConnection connection = new SqlConnection(conString) )
+                {
+                SqlCommand command = new SqlCommand("empleadosModificar", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                if ( e.id != null )
+                    command.Parameters.AddWithValue("@id", e.id);
+
+                if ( e.Dni != null )
+                    command.Parameters.AddWithValue("@dni", e.Dni);
+
+
+                if ( e.Nombre != null )
+                    command.Parameters.AddWithValue("@nombre_apellido", e.Nombre);
+
+
+                if ( e.Direccion != null )
+                    command.Parameters.AddWithValue("@direccion", e.Direccion);
+
+
+                if ( e.FechaIngreso != null )
+                    command.Parameters.AddWithValue("@fecha_ingreso", e.FechaIngreso);
+
+
+                if ( e.Salario != null )
+                    command.Parameters.AddWithValue("@salario", e.Salario);
+
+
+                if ( e.Departamento != null && e.Departamento.id != null )
+                    command.Parameters.AddWithValue("@depto_id", e.Departamento.id);
+
+                try
+                    {
+                    connection.Open();
+
+                    //hacemos el update
+                    command.ExecuteNonQuery();
+                    }
+                catch ( Exception ) { throw; }
+                return true;
+                }
+            }
+
         public static int Insert ( Empleado e )
             {
             int idEmpleadoCreado = 0;
@@ -109,4 +156,8 @@ namespace AdminEmpleadosDatos
                 }
             }
         }
+
     }
+
+
+
