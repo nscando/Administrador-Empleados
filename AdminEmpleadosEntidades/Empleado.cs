@@ -52,6 +52,11 @@ namespace AdminEmpleadosEntidades
             {
             get; set;
             }
+
+        public bool anulado
+            {
+            get; set;
+            }
         }
 
     }

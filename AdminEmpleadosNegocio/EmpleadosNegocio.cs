@@ -48,6 +48,8 @@ namespace AdminEmpleadosNegocio
                 return 0;
                 }
 
+
+
             if ( e.FechaIngreso == null )
                 {
                 e.FechaIngreso = DateTime.Now;

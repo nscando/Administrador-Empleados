@@ -37,11 +37,14 @@ namespace AdminEmpleadosDatos
                         if ( reader["salario"].GetType() != typeof(DBNull) )
                             emp.Salario = Convert.ToDecimal(reader["salario"]);
 
-                        if ( reader["nombre_depto"].GetType() != typeof(DBNull) )
+                        if ( reader["anulado"].GetType() != typeof(DBNull) )
+                            emp.anulado = Convert.ToBoolean(reader["anulado"]);
+
+                        if ( reader["nombre_dpto"].GetType() != typeof(DBNull) )
                             {
                             Departamento dep = new Departamento();
                             dep.id = 0;
-                            dep.Nombre = Convert.ToString(reader["nombre_depto"]);
+                            dep.Nombre = Convert.ToString(reader["nombre_dpto"]);
                             emp.Departamento = dep;
                             }
 
@@ -90,7 +93,13 @@ namespace AdminEmpleadosDatos
 
 
                 if ( e.Departamento != null && e.Departamento.id != null )
-                    command.Parameters.AddWithValue("@depto_id", e.Departamento.id);
+                    command.Parameters.AddWithValue("@dpto_id", e.Departamento.id);
+
+                if ( e.NombreDepartamento != null && e.NombreDepartamento != null )
+                    command.Parameters.AddWithValue("@nombre_dpto", e.NombreDepartamento);
+
+
+                command.Parameters.AddWithValue("@anulado", e.anulado);
 
                 try
                     {
@@ -136,9 +145,12 @@ namespace AdminEmpleadosDatos
 
 
                 if ( e.Departamento != null && e.Departamento.id != null )
-                    command.Parameters.AddWithValue("@depto_id", e.Departamento.id);
+                    command.Parameters.AddWithValue("@dpto_id", e.Departamento.id);
 
+                if ( e.NombreDepartamento != null && e.NombreDepartamento != null )
+                    command.Parameters.AddWithValue("@nombre_dpto", e.NombreDepartamento);
 
+                command.Parameters.AddWithValue("@anulado", e.anulado);
                 try
                     {
                     connection.Open();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent ()
             {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,7 +45,9 @@
             this.cbmDepartamento = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.departamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departamentoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -169,11 +172,15 @@
             // 
             // cbmDepartamento
             // 
+            this.cbmDepartamento.DataSource = this.departamentoBindingSource;
+            this.cbmDepartamento.DisplayMember = "Nombre";
+            this.cbmDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbmDepartamento.FormattingEnabled = true;
             this.cbmDepartamento.Location = new System.Drawing.Point(197, 357);
             this.cbmDepartamento.Name = "cbmDepartamento";
             this.cbmDepartamento.Size = new System.Drawing.Size(313, 29);
             this.cbmDepartamento.TabIndex = 13;
+            this.cbmDepartamento.ValueMember = "id";
             // 
             // btnAceptar
             // 
@@ -196,6 +203,10 @@
             this.btnCancelar.Text = "Cerrar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // departamentoBindingSource
+            // 
+            this.departamentoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Departamento);
             // 
             // FrmEditEmpleados
             // 
@@ -226,6 +237,7 @@
             this.Text = "FrmInsertEmpleados";
             this.Load += new System.EventHandler(this.FrmInsertEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departamentoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +260,6 @@
         private ComboBox cbmDepartamento;
         private Button btnAceptar;
         private Button btnCancelar;
+        private BindingSource departamentoBindingSource;
         }
     }

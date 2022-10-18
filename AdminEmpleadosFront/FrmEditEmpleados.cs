@@ -58,7 +58,8 @@ namespace AdminEmpleadosFront
                 emp.Direccion = txtDireccion.Text.Trim();
                 emp.Dni = txtDni.Text.Trim();
                 emp.FechaIngreso = txtIngreso.Value;
-                emp.Departamento = null;
+                emp.Departamento = new Departamento();
+                emp.Departamento.id = (int) cbmDepartamento.SelectedValue;
                 emp.Nombre = txtNombre.Text.Trim();
 
                 string mensajeErrores = "";
@@ -105,6 +106,8 @@ namespace AdminEmpleadosFront
 
         private void FrmInsertEmpleados_Load ( object sender, EventArgs e )
             {
+            CargarComboDepartamento();
+
             if ( modo == EnumModoForm.Alta )
                 {
                 LimpiarControles();
@@ -122,6 +125,12 @@ namespace AdminEmpleadosFront
                 CargarDatos();
                 btnAceptar.Enabled = false;
                 }
+            }
+
+        private void CargarComboDepartamento ()
+            {
+            Departamento d = new Departamento();
+            departamentoBindingSource.DataSource = DepartamentosNegocio.Get(d);
             }
 
         private void btnCancelar_Click ( object sender, EventArgs e )
@@ -150,9 +159,17 @@ namespace AdminEmpleadosFront
                 txtIngreso.Value = Convert.ToDateTime(_empleado.FechaIngreso);
                 txtNombre.Text = _empleado.Nombre;
                 }
+
+            if ( _empleado.Departamento != null )
+                {
+                cbmDepartamento.SelectedValue = _empleado.Departamento.id;
+                }
             }
 
+        private void bindingSource1_CurrentChanged ( object sender, EventArgs e )
+            {
 
+            }
         }
 
 

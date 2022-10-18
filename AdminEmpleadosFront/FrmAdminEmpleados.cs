@@ -18,6 +18,26 @@ namespace AdminEmpleadosFront
 
         private void btnEliminar_Click ( object sender, EventArgs e )
             {
+            if ( empleadoBindingSource.Current == null )
+                return;
+
+            Empleado emp = (Empleado) empleadoBindingSource.Current;
+
+            DialogResult res = MessageBox.Show("¿Confirma que desea anular el empleado " + emp.Nombre + " ?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if ( res == DialogResult.No )
+                {
+                return;
+                }
+            emp.anulado = true;
+
+            try
+                {
+                EmpleadosNegocio.Update(emp);
+                MessageBox.Show("El empleado " + emp.Nombre + " fue anulado correctamente", "Anulación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            catch ( Exception ex ) { MessageBox.Show(ex.Message); }
+            buscarEmpleados();
+
             }
 
         private void btnModificar_Click ( object sender, EventArgs e )
