@@ -115,5 +115,10 @@ namespace AdminEmpleadosFront
                 buscarEmpleados();
                 }
             }
+
+        private void FrmAdminEmpleados_Load ( object sender, EventArgs e )
+            {
+
+            }
         }
     }

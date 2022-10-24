@@ -1,5 +1,6 @@
 ﻿using AdminEmpleadosEntidades;
 using AdminEmpleadosNegocio;
+using System.ComponentModel;
 
 namespace AdminEmpleadosFront
     {
@@ -170,9 +171,21 @@ namespace AdminEmpleadosFront
             {
 
             }
+
+        private void txt_Validating ( object sender, CancelEventArgs e )
+            {
+            errorProvider1.Clear();
+            if ( String.IsNullOrEmpty(txtDni.Text.Trim()) )
+                {
+                errorProvider1.SetError(txtDni, "Ingrese el DNI");
+                }
+            if ( String.IsNullOrEmpty(txtNombre.Text.Trim()) )
+                {
+                errorProvider1.SetError(txtNombre, "Ingrese el nombre");
+                }
+            }
+
         }
-
-
 
 
     }

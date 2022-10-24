@@ -43,11 +43,13 @@
             this.txtIngreso = new System.Windows.Forms.DateTimePicker();
             this.txtSalario = new System.Windows.Forms.NumericUpDown();
             this.cbmDepartamento = new System.Windows.Forms.ComboBox();
+            this.departamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.departamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departamentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -133,6 +135,7 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(367, 29);
             this.txtDni.TabIndex = 8;
+            this.txtDni.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
             // 
             // txtNombre
             // 
@@ -140,6 +143,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(367, 29);
             this.txtNombre.TabIndex = 9;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txt_Validating);
             // 
             // txtDireccion
             // 
@@ -182,6 +186,10 @@
             this.cbmDepartamento.TabIndex = 13;
             this.cbmDepartamento.ValueMember = "id";
             // 
+            // departamentoBindingSource
+            // 
+            this.departamentoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Departamento);
+            // 
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.DarkSeaGreen;
@@ -204,9 +212,9 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // departamentoBindingSource
+            // errorProvider1
             // 
-            this.departamentoBindingSource.DataSource = typeof(AdminEmpleadosEntidades.Departamento);
+            this.errorProvider1.ContainerControl = this;
             // 
             // FrmEditEmpleados
             // 
@@ -238,6 +246,7 @@
             this.Load += new System.EventHandler(this.FrmInsertEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSalario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departamentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,5 +270,6 @@
         private Button btnAceptar;
         private Button btnCancelar;
         private BindingSource departamentoBindingSource;
+        private ErrorProvider errorProvider1;
         }
     }

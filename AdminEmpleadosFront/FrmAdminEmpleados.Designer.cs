@@ -66,7 +66,7 @@
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(143, 472);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(143, 441);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // btnBuscar
@@ -166,7 +166,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(143, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(745, 440);
+            this.dataGridView1.Size = new System.Drawing.Size(745, 397);
             this.dataGridView1.TabIndex = 2;
             // 
             // idDataGridViewTextBoxColumn
@@ -227,13 +227,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(891, 472);
+            this.ClientSize = new System.Drawing.Size(891, 441);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "FrmAdminEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administracion de Empleados";
+            this.Load += new System.EventHandler(this.FrmAdminEmpleados_Load);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
