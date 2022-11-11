@@ -118,5 +118,20 @@ namespace AdminEmpleadosFront
             childForm.modo = EnumModoForm.Alta;
             childForm.Show();
             }
+
+        private void administracionToolStripMenuItem_Click_1 ( object sender, EventArgs e )
+            {
+            FrmAdminEmpleados childForm = new FrmAdminEmpleados();
+            childForm.MdiParent = this;
+            childForm.Show();
+            }
+
+        private void altaToolStripMenuItem_Click_1 ( object sender, EventArgs e )
+            {
+            FrmEditEmpleados childForm = new FrmEditEmpleados();
+            childForm.MdiParent = this;
+            childForm.modo = EnumModoForm.Alta;
+            childForm.Show();
+            }
         }
     }

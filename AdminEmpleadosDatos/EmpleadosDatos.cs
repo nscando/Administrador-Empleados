@@ -190,7 +190,8 @@ namespace AdminEmpleadosDatos
                 if ( e.NombreDepartamento != null && e.NombreDepartamento != null )
                     command.Parameters.AddWithValue("@nombre_dpto", e.NombreDepartamento);
 
-                command.Parameters.AddWithValue("@anulado", e.anulado);
+                //esta linea me esta tirando el error 
+                //command.Parameters.AddWithValue("@anulado", e.anulado);
                 try
                     {
                     //recien en este punto se abre la conexion con la BD
