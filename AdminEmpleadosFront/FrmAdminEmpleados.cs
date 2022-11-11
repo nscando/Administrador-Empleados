@@ -57,22 +57,33 @@ namespace AdminEmpleadosFront
 
         private void btnConsultar_Click ( object sender, EventArgs e )
             {
+            //empleado seleccionado en la grilla si es = a null, sale
             if ( empleadoBindingSource.Current == null )
                 {
                 return;
                 }
+            //instanciamos el formulario de edicion
             FrmEditEmpleados frm = new FrmEditEmpleados();
 
+            //seteamos el modo con el cual vamos a trabajar, en este caso "consulta"
             frm.modo = EnumModoForm.Consulta;
+            //tomamos el empleado seleccionado
+            //_empleado es una propiedad del formulario de edicion "FrmEditEmpleados"
+            //es como pasar un parametro de un formulario al otro
             frm._empleado = (Empleado) empleadoBindingSource.Current;
+
+            //muestra el formulario de tipo "Modal"
             frm.ShowDialog();
             buscarEmpleados();
             }
 
         private void btnAlta_Click ( object sender, EventArgs e )
             {
+            //instanciamos al formulario de edicion de empleados
             FrmEditEmpleados frm = new FrmEditEmpleados();
+            //usamos la enumeracion para asignar el valor de ALTA
             frm.modo = EnumModoForm.Alta;
+            //con sl showdialog iniciamos el formulario
             frm.ShowDialog();
 
             buscarEmpleados();
@@ -88,9 +99,10 @@ namespace AdminEmpleadosFront
             //Obtengo el nombre ingresado por el usuario
             string nombreBuscar = txtBusqueda.Text.Trim().ToUpper();
 
-            //declaro el parametro de busqueda
+            //declaro el parametro 
             Empleado parametroDeBusqueda = new Empleado();
 
+            //verifico que el parametro no venga null y asigno el nombre ingresado
             if ( !String.IsNullOrEmpty(nombreBuscar.Trim()) )
                 parametroDeBusqueda.Nombre = nombreBuscar;
 
@@ -110,6 +122,7 @@ namespace AdminEmpleadosFront
 
         private void txtBusqueda_KeyPress ( object sender, KeyPressEventArgs e )
             {
+            //llamo al metodo buscar cuando se presiona la tecla "enter" con el evento "KEYPRESS"
             if ( e.KeyChar == (char) Keys.Enter )
                 {
                 buscarEmpleados();

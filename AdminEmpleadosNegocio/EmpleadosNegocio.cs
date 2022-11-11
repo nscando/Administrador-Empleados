@@ -36,8 +36,10 @@ namespace AdminEmpleadosNegocio
             catch ( Exception ) { throw; }
             }
 
+        //el metodo recibe un empleado por parametro
         public static int Insert ( Empleado e )
             {
+            //hacemos las validaciones correspondientes
             if ( String.IsNullOrEmpty(e.Nombre) )
                 {
                 return 0;
@@ -48,8 +50,6 @@ namespace AdminEmpleadosNegocio
                 return 0;
                 }
 
-
-
             if ( e.FechaIngreso == null )
                 {
                 e.FechaIngreso = DateTime.Now;
@@ -57,6 +57,7 @@ namespace AdminEmpleadosNegocio
 
             try
                 {
+                //si esta todo ok hacemos vamos a la capa de datos
                 return EmpleadosDatos.Insert(e);
                 }
             catch ( Exception ) { throw; }
