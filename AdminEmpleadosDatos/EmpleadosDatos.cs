@@ -191,7 +191,7 @@ namespace AdminEmpleadosDatos
                     command.Parameters.AddWithValue("@nombre_dpto", e.NombreDepartamento);
 
                 //esta linea me esta tirando el error 
-                //command.Parameters.AddWithValue("@anulado", e.anulado);
+                command.Parameters.AddWithValue("@anulado", e.anulado);
                 try
                     {
                     //recien en este punto se abre la conexion con la BD
