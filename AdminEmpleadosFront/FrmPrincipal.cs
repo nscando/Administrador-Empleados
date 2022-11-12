@@ -104,20 +104,7 @@ namespace AdminEmpleadosFront
                 }
             }
 
-        private void administracionToolStripMenuItem_Click ( object sender, EventArgs e )
-            {
-            FrmAdminEmpleados childForm = new FrmAdminEmpleados();
-            childForm.MdiParent = this;
-            childForm.Show();
-            }
-
-        private void altaToolStripMenuItem_Click ( object sender, EventArgs e )
-            {
-            FrmEditEmpleados childForm = new FrmEditEmpleados();
-            childForm.MdiParent = this;
-            childForm.modo = EnumModoForm.Alta;
-            childForm.Show();
-            }
+  
 
         private void administracionToolStripMenuItem_Click_1 ( object sender, EventArgs e )
             {
@@ -128,10 +115,18 @@ namespace AdminEmpleadosFront
 
         private void altaToolStripMenuItem_Click_1 ( object sender, EventArgs e )
             {
+            //instanciamos el formulario de Edicion de Empleados
             FrmEditEmpleados childForm = new FrmEditEmpleados();
+            //el this apunta al formulario sobre el cual estamos parados
+            //apunta al formulario padre
             childForm.MdiParent = this;
             childForm.modo = EnumModoForm.Alta;
             childForm.Show();
+            }
+
+        private void salirToolStripMenuItem_Click ( object sender, EventArgs e )
+            {
+            this.Close();
             }
         }
     }
